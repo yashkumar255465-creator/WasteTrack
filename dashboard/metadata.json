@@ -1,0 +1,7 @@
+{
+  "name": "WasteTrack - CIWMCPL Waste Operations",
+  "description": "Production-grade municipal waste truck monitoring and management system with Role-Based Access Control (RBAC), zone-level authorization, fleet tracking, and live weighbridge manifests.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
