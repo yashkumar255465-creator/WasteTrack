@@ -1,0 +1,45 @@
+# WasteTrack Docker Compose Configuration
+
+version: '3.8'
+
+services:
+  database:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: wastetrack-sql
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "WasteTrack@2026!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: wastetrack-backend
+    restart: unless-stopped
+    depends_on:
+      - database
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__DefaultConnection=Server=database;Database=waste;User Id=sa;Password=WasteTrack@2026!;TrustServerCertificate=True;
+    ports:
+      - "5000:5000"
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: wastetrack-dashboard
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mssql-data:

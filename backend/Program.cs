@@ -114,11 +114,9 @@ using (var scope = app.Services.CreateScope())
     db.SaveChanges();
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Enable Swagger in all environments for API testing and verification
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // app.UseHttpsRedirection();
 app.UseCors("Frontend");
