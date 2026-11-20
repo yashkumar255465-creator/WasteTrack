@@ -1,6 +1,5 @@
 # Backend Dockerfile for .NET 8 Web API
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG TARGETARCH
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY ["WasteTrack.API.csproj", "./"]
