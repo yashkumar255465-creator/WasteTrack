@@ -1,0 +1,28 @@
+# Root .gitignore for WasteTrackSystem
+
+# Environment variables & secrets
+.env
+.env*.local
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+coverage/
+*.log
+
+# .NET / Backend
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+WasteTrack.db
+
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
